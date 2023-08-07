@@ -145,9 +145,8 @@ bash ./breakdown.sh download fixed
 bash ./breakdown.sh download ditto
 ```
 
-7. Run the redis experiment. 
+7. Run the Redis experiment. 
 - 7.0 Set up the Redis server in AWS Elasticache and get the hostname of your Redis server. Please refer to [data-processing/README.md](data-processing/README.md) for detailed information. 
-<<<<<<< HEAD
 - 7.1 On each server, run `cd ~/Ditto/data-processing && bash ./update_redis.sh <redis_hostname>`. The hostname is `endpoint:port` of your Redis server, e.g., `jc-redis.5rjkoi.ng.0001.use1.cache.amazonaws.com:6379`. Then on the scheduler server, run `bash ./upload_redis.sh` to upload the raw data from S3 to Redis. Modify the 6-th line of `~/Ditto/scripts/expr.sh` to `redis_endpoint=<endpoint>`, e.g., `redis_endpoint=jc-redis.5rjkoi.ng.0001.use1.cache.amazonaws.com`.
 - 7.2 Profile the queries: refer to step 4 (Profile the four queries) above.
 - 7.3 Build the performance models: refer to step 5.2 (Build the performance models for the queries) above. **Note**: do **NOT** run `sudo bash clean.sh 11`.
