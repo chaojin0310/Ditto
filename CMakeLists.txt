@@ -1,0 +1,65 @@
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 17)
+project(query LANGUAGES CXX)
+
+include_directories(include)
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBDPDK REQUIRED libdpdk)
+
+find_package(AWSSDK REQUIRED COMPONENTS s3)
+
+find_package(GLOG REQUIRED)
+
+add_library(spright SHARED src/spright_wrapper.cpp)
+
+add_library(operator SHARED src/operator.cpp)
+
+add_library(query SHARED src/query.cpp)
+
+add_executable(shm src/shm_mgr.cpp)
+target_compile_options(shm PUBLIC ${LIBDPDK_CFLAGS})
+target_link_libraries(shm spright ${LIBDPDK_LDFLAGS})
+target_link_libraries(shm operator)
+target_link_libraries(shm glog::glog)
+target_link_libraries(shm ${AWSSDK_LINK_LIBRARIES})
+find_library(HIREDIS_LIB hiredis)
+target_link_libraries(shm ${HIREDIS_LIB})
+find_library(REDIS_PLUS_PLUS_LIB redis++)
+target_link_libraries(shm ${REDIS_PLUS_PLUS_LIB})
+
+add_executable(scheduler src/scheduler.cpp)
+target_compile_options(scheduler PUBLIC ${LIBDPDK_CFLAGS})
+target_link_libraries(scheduler spright ${LIBDPDK_LDFLAGS})
+target_link_libraries(scheduler operator)
+target_link_libraries(scheduler glog::glog)
+target_link_libraries(scheduler ${AWSSDK_LINK_LIBRARIES})
+find_library(HIREDIS_LIB hiredis)
+target_link_libraries(scheduler ${HIREDIS_LIB})
+find_library(REDIS_PLUS_PLUS_LIB redis++)
+target_link_libraries(scheduler ${REDIS_PLUS_PLUS_LIB})
+
+add_executable(executor src/executor.cpp)
+target_compile_options(executor PUBLIC ${LIBDPDK_CFLAGS})
+target_link_libraries(executor spright ${LIBDPDK_LDFLAGS})
+target_link_libraries(executor operator)
+target_link_libraries(executor glog::glog)
+target_link_libraries(executor ${AWSSDK_LINK_LIBRARIES})
+target_link_libraries(executor query)
+find_library(HIREDIS_LIB hiredis)
+target_link_libraries(executor ${HIREDIS_LIB})
+find_library(REDIS_PLUS_PLUS_LIB redis++)
+target_link_libraries(executor ${REDIS_PLUS_PLUS_LIB})
+
+add_executable(split data-processing/splitter.cpp)
+target_compile_options(split PUBLIC ${LIBDPDK_CFLAGS})
+target_link_libraries(split glog::glog)
+target_link_libraries(split ${AWSSDK_LINK_LIBRARIES})
+
+add_executable(uploader data-processing/uploader.cpp)
+target_compile_options(uploader PUBLIC ${LIBDPDK_CFLAGS})
+target_link_libraries(uploader glog::glog)
+target_link_libraries(uploader ${AWSSDK_LINK_LIBRARIES})
+target_link_libraries(uploader ${HIREDIS_LIB})
+find_library(REDIS_PLUS_PLUS_LIB redis++)
+target_link_libraries(uploader ${REDIS_PLUS_PLUS_LIB})

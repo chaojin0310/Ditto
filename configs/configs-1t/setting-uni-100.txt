@@ -1,0 +1,11 @@
+num_cpus 2
+
+proc_step algorithm
+algorithm greedy
+mode JCT
+
+resource uniform-1
+distribution 47 47 47 47 47 47 47 47
+base_deg 45
+
+external S3

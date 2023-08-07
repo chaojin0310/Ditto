@@ -1,0 +1,108 @@
+Query 1
+
+Stage 1
+is_single 0
+is_leaf 1
+input_chunks 12
+to_id 3
+transfer_op allgather
+from_id
+mem_parall 0.0098
+mem_fixed 0
+input_size 0.0098
+
+Stage 2
+is_single 0
+is_leaf 1
+input_chunks 24
+to_id 3
+transfer_op gather
+from_id
+mem_parall 39.7
+mem_fixed 0
+input_size 33
+
+Stage 3
+is_single 0
+is_leaf 0
+to_id 4
+transfer_op gather
+from_id 1 2
+pre_id 1
+mem_parall 28.6297
+mem_fixed 0.0098
+input_size 6.7
+
+Stage 4
+is_single 0
+is_leaf 0
+to_id 5
+transfer_op allgather
+from_id 3
+mem_parall 21.8538
+mem_fixed 0
+input_size 0.93
+
+Stage 5
+is_single 1
+is_leaf 0
+to_id 7
+transfer_op broadcast
+from_id 4
+mem_parall 1.8389
+mem_fixed 0
+input_size 0.92
+
+Stage 6
+is_single 0
+is_leaf 1
+input_chunks 24
+to_id 7
+transfer_op allgather
+from_id
+mem_parall 1.787
+mem_fixed 0
+input_size 1.5
+
+Stage 7
+is_single 0
+is_leaf 0
+to_id 9
+transfer_op gather
+from_id 5 6
+pre_id 6
+mem_parall 2.7148
+mem_fixed 0.287
+input_size 1.838
+
+Stage 8
+is_single 0
+is_leaf 1
+input_chunks 12
+to_id 9
+transfer_op allgather
+from_id
+mem_parall 0.00026
+mem_fixed 0
+input_size 0.00026
+
+Stage 9
+is_single 0
+is_leaf 0
+to_id 10
+transfer_op allgather
+from_id 7 8
+pre_id 8
+mem_parall 1.9596
+mem_fixed 0
+input_size 0.95
+
+Stage 10
+is_single 1
+is_leaf 0
+to_id -1
+transfer_op allgather
+from_id 9
+mem_parall 0.1596
+mem_fixed 0.0286
+input_size 0.18

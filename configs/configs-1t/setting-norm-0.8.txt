@@ -1,0 +1,11 @@
+num_cpus 2
+
+proc_step algorithm
+algorithm elastic
+mode JCT
+
+resource norm-0.8
+distribution 9 21 39 47 47 39 21 9
+base_deg 32
+
+external S3

@@ -1,0 +1,11 @@
+num_cpus 2
+
+proc_step algorithm
+algorithm nimble
+mode JCT
+
+resource uniform-25
+distribution 11 11 11 11 11 11 11 11
+base_deg 11
+
+external S3

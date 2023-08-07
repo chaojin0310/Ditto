@@ -1,0 +1,11 @@
+num_cpus 2
+
+proc_step algorithm
+algorithm elastic
+mode cost
+
+resource uniform-50
+distribution 24 24 24 24 24 24 24 24
+base_deg 23
+
+external S3
