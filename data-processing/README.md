@@ -22,8 +22,4 @@
 
 ## 2. Get the Redis server hostname
 
-The hostname of your redis server (note that port number 6379 should be put in the end, separated by `:`) can be acquired by clicking on the cluster name in the `Redis clusters` page. It is the value of **primary endpoint**.
-
-## 3. Deleting intermediate data
-
-https://stackoverflow.com/a/4006575
+The hostname of your redis server can be acquired by clicking on the cluster name in the `Redis clusters` page. It is the value of **primary endpoint**. Typically, the hostname is composed of endpoint url and port number, i.e., `endpoint:port`.
