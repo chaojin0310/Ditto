@@ -8,4 +8,4 @@ resource zipf-0.9
 distribution 15 13
 base_deg 3
 
-external Redis
+external S3
