@@ -9,7 +9,7 @@ build/
 # Logs
 logs
 *.log
-*log*
+*log*\glog*
 data-processing/data
 results/*
 
