@@ -187,7 +187,7 @@ For any question, please contact Chao Jin (`chaojin at pku dot edu dot cn`).
 
 # 4. Reference
 
-···
+```
 @inproceedings{jin2023ditto,
   title={Ditto: Efficient Serverless Analytics with Elastic Parallelism},
   author={Jin, Chao and Zhang, Zili and Xiang, Xingyu and Zou, Songyun and Huang, Gang and Liu, Xuanzhe and Jin, Xin},
@@ -195,4 +195,4 @@ For any question, please contact Chao Jin (`chaojin at pku dot edu dot cn`).
   pages={406--419},
   year={2023}
 }
-···
+```
